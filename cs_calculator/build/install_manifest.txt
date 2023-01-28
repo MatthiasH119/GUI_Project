@@ -1,0 +1,5 @@
+/home/ming/GUI_Project/cs_calculator/deploy/./calculator
+/home/ming/GUI_Project/cs_calculator/deploy/./libCsCore1.7.so
+/home/ming/GUI_Project/cs_calculator/deploy/./libCsGui1.7.so
+/home/ming/GUI_Project/cs_calculator/deploy/./platforms/CsGuiXcb1.7.so
+/home/ming/GUI_Project/cs_calculator/deploy/./libCsXcbSupport1.7.so

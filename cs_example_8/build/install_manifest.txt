@@ -1,0 +1,5 @@
+/home/ming/GUI_Project/cs_example_8/deploy/./example_8
+/home/ming/GUI_Project/cs_example_8/deploy/./libCsCore1.7.so
+/home/ming/GUI_Project/cs_example_8/deploy/./libCsGui1.7.so
+/home/ming/GUI_Project/cs_example_8/deploy/./platforms/CsGuiXcb1.7.so
+/home/ming/GUI_Project/cs_example_8/deploy/./libCsXcbSupport1.7.so

@@ -1,0 +1,4 @@
+# ninja log v5
+0	7009	1674897835708035500	CMakeFiles/example_8.dir/main.cpp.o	46a8fbd03c497860
+7011	7544	1674897836468035500	bin/example_8	b41f343e31c0c68e
+7544	7617	0	CMakeFiles/install.util	5e24cd4b743a9f31
