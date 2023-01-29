@@ -31,7 +31,7 @@ class MainWindow : public QWidget
 
 MainWindow::MainWindow()
 {
-   setMinimumSize(700, 350);
+   setMinimumSize(900, 600);
  
    //Erstellen von Überschriften
    QLabel *label_1 = new QLabel(
@@ -86,40 +86,31 @@ MainWindow::MainWindow()
    QPushButton *pb_exe = new QPushButton();
    pb_exe->setText("=");
 
+   //Erstellung eines Grids
+   QGridLayout *grid = new QGridLayout();
+   grid->setContentsMargins(100, 50, 100, 25);
+   grid->setHorizontalSpacing(20);
+   grid->setVerticalSpacing(45); 
+
    //Gestaltung des Layouts für die Inputs
-   QGridLayout *grid_input = new QGridLayout();
-   grid_input->setContentsMargins(75, 45, 75, 25);
-   grid_input->setHorizontalSpacing(20);
-   grid_input->setVerticalSpacing(45); 
-
-   grid_input->addWidget(label_1,          0,    0);
-   grid_input->addWidget(text_z1,          1,    0);
-   grid_input->addWidget(label_2,          0,    1);
-   grid_input->addWidget(operator_text,    1,    1);
-   grid_input->addWidget(label_3,          0,    2);
-   grid_input->addWidget(text_z2,          1,    2);
-
-   //Gestaltung des Layouts für die Outputs
-   QGridLayout *grid_output = new QGridLayout();
-   grid_output->setContentsMargins(75, 45, 75, 25);
-   grid_output->setHorizontalSpacing(20);
-   grid_output->setVerticalSpacing(45); 
-
-   grid_output->addWidget(label_erg,        0,    0);
-   grid_output->addWidget(text_erg,         1,    0);
+   grid->addWidget(label_1,          0,    0);
+   grid->addWidget(text_z1,          1,    0);
+   grid->addWidget(label_2,          0,    1);
+   grid->addWidget(operator_text,    1,    1);
+   grid->addWidget(label_3,          0,    2);
+   grid->addWidget(text_z2,          1,    2);
 
    //Gestaltung des Layouts für die Buttons
-   QGridLayout *grid_buttons = new QGridLayout();
-   grid_buttons->setContentsMargins(75, 45, 75, 25);
-   grid_buttons->setHorizontalSpacing(20);
-   grid_buttons->setVerticalSpacing(45); 
+   grid->addWidget(pb_add,         2,    0);
+   grid->addWidget(pb_sub,         3,    0);
+   grid->addWidget(pb_mul,         2,    1);
+   grid->addWidget(pb_div,         3,    1);
+   grid->addWidget(pb_clear,       2,    2);
+   grid->addWidget(pb_exe,         3,    2);
 
-   grid_buttons->addWidget(pb_add,         0,    0);
-   grid_buttons->addWidget(pb_sub,         0,    1);
-   grid_buttons->addWidget(pb_mul,         0,    2);
-   grid_buttons->addWidget(pb_div,         0,    3);
-   grid_buttons->addWidget(pb_clear,       1,    0);
-   grid_buttons->addWidget(pb_exe,         1,    3);
+   //Gestaltung des Layouts für die Output
+   grid->addWidget(label_erg,        4,    0,   1, 3);
+   grid->addWidget(text_erg,         5,    0,   1, 3);
 
    //Gestaltung des Exit Layouts
    QHBoxLayout *layout_exit = new QHBoxLayout();
@@ -129,11 +120,7 @@ MainWindow::MainWindow()
  
    //Gestaltung des Main Layouts aus den einzelnen Layouts
    QVBoxLayout *layoutMain = new QVBoxLayout(this);
-   layoutMain->addLayout(grid_input);
-   layoutMain->addSpacing(10);
-   layoutMain->addLayout(grid_buttons);
-   layoutMain->addSpacing(75);
-   layoutMain->addLayout(grid_output);
+   layoutMain->addLayout(grid);
    layoutMain->addSpacing(75);
    layoutMain->addLayout(layout_exit);
  
@@ -202,15 +189,25 @@ void MainWindow::Change_erg()
       ergebnis = zahl_1 * zahl_2;
       break;
    case '/':
-      ergebnis = zahl_1 / zahl_2;
-      break;
+      if (zahl_2 == 0) {
+         break;
+         }
+      else {
+         ergebnis = zahl_1 / zahl_2;
+         break;
+         }
    
    default:
       ergebnis = 00000;
       break;
    }
-
-   text_erg->setText(QString::number(ergebnis));
+   
+   if (zahl_2 == 0){
+      text_erg->setText("Syntax Error!");	
+      }
+   else {
+      text_erg->setText(QString::number(ergebnis));
+      }
 }
 
 int main(int argc, char *argv[])
